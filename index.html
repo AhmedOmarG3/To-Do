@@ -13,10 +13,53 @@
             font-family: 'Poppins', Arial, sans-serif;
         }
 
+        /* Animations */
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-100px) rotate(180deg);
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         body {
             min-height: 100vh;
             padding: 20px;
-            background: #4776E6;
             background: linear-gradient(-45deg, #4776E6, #8E54E9, #4776E6, #8E54E9);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
@@ -24,7 +67,54 @@
             overflow-x: hidden;
         }
 
-        /* Main container styles */
+        /* Animated Background Shapes */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 10%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .shape:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 6s;
+        }
+
         .container {
             width: 100%;
             max-width: 600px;
@@ -36,15 +126,17 @@
             backdrop-filter: blur(10px);
             position: relative;
             z-index: 2;
-            height: calc(100vh - 40px); /* Subtract padding */
+            height: calc(100vh - 40px);
             display: flex;
             flex-direction: column;
+            animation: fadeIn 1s ease-out;
         }
 
         .header {
             text-align: center;
             margin-bottom: 20px;
             flex-shrink: 0;
+            animation: fadeIn 1s ease-out;
         }
 
         h1 {
@@ -67,6 +159,7 @@
             gap: 10px;
             margin-bottom: 20px;
             flex-shrink: 0;
+            animation: slideIn 1s ease-out;
         }
 
         #taskInput {
@@ -92,7 +185,11 @@
             font-weight: 500;
         }
 
-        /* Task list container */
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(71, 118, 230, 0.3);
+        }
+
         .task-list-container {
             flex: 1;
             overflow-y: auto;
@@ -114,6 +211,12 @@
             gap: 15px;
             transition: all 0.3s ease;
             border: 1px solid #e2e8f0;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .task-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .task-checkbox {
@@ -127,6 +230,7 @@
             flex: 1;
             font-size: 16px;
             color: #2d3748;
+            transition: all 0.3s ease;
         }
 
         .task-item.completed .task-text {
@@ -145,22 +249,11 @@
             transition: all 0.3s ease;
         }
 
-        /* Scrollbar styling */
-        .task-list-container::-webkit-scrollbar {
-            width: 6px;
+        .delete-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
         }
 
-        .task-list-container::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 3px;
-        }
-
-        .task-list-container::-webkit-scrollbar-thumb {
-            background: rgba(71, 118, 230, 0.5);
-            border-radius: 3px;
-        }
-
-        /* Mobile Responsive Styles */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
@@ -169,10 +262,6 @@
             .container {
                 height: calc(100vh - 20px);
                 padding: 15px;
-            }
-
-            h1 {
-                font-size: 2rem;
             }
 
             .input-section {
@@ -184,12 +273,11 @@
                 padding: 12px;
             }
 
-            .task-item {
-                padding: 12px;
+            .shape {
+                opacity: 0.5;
             }
         }
 
-        /* Small screen adjustments */
         @media (max-width: 380px) {
             .container {
                 padding: 10px;
@@ -206,6 +294,14 @@
     </style>
 </head>
 <body>
+    <!-- Animated Background Shapes -->
+    <div class="bg-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
     <div class="container">
         <div class="header">
             <h1>TaskFlow</h1>
