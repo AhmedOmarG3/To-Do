@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TaskFlow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Previous styles remain the same until the media queries */
+
+        /* Enhanced Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px;
+                margin: 10px;
+                max-width: 100%;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .input-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            #taskInput {
+                width: 100%;
+                padding: 12px 15px;
+                font-size: 15px;
+            }
+
+            .add-btn {
+                width: 100%;
+                padding: 12px;
+                font-size: 15px;
+            }
+
+            .task-item {
+                padding: 12px;
+                gap: 10px;
+            }
+
+            .task-text {
+                font-size: 14px;
+            }
+
+            .delete-btn {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+
+            /* Adjust background shapes for mobile */
+            .shape {
+                opacity: 0.5;
+            }
+
+            .shape:nth-child(1) {
+                width: 60px;
+                height: 60px;
+            }
+
+            .shape:nth-child(2) {
+                width: 80px;
+                height: 80px;
+            }
+
+            .shape:nth-child(3) {
+                width: 40px;
+                height: 40px;
+            }
+
+            .shape:nth-child(4) {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 380px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 0.8rem;
+            }
+
+            #taskInput {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .add-btn {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .task-item {
+                padding: 10px;
+                flex-wrap: wrap;
+            }
+
+            .task-text {
+                font-size: 13px;
+                width: calc(100% - 40px);
+            }
+
+            .delete-btn {
+                margin-left: auto;
+                padding: 5px 10px;
+                font-size: 12px;
+            }
+        }
+
+        /* Landscape Mode */
+        @media (max-height: 500px) and (orientation: landscape) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                margin: 0;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .header {
+                margin-bottom: 15px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 5px;
+            }
+
+            .input-section {
+                margin-bottom: 15px;
+            }
+
+            .task-list {
+                gap: 10px;
+            }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) {
+            .add-btn:active,
+            .delete-btn:active,
+            .task-item:active {
+                transform: scale(0.98);
+            }
+
+            .task-checkbox {
+                width: 24px;
+                height: 24px;
+            }
+
+            .delete-btn {
+                padding: 8px 16px;
+            }
+        }
+
+        /* Scrollbar Styling for Mobile */
+        .task-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .task-list::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+        }
+
+        .task-list::-webkit-scrollbar-thumb {
+            background: rgba(71, 118, 230, 0.5);
+            border-radius: 3px;
+        }
+
+        /* Safe Area Handling for Modern Mobile Devices */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(20px, env(safe-area-inset-left));
+                padding-right: max(20px, env(safe-area-inset-right));
+                padding-bottom: max(20px, env(safe-area-inset-bottom));
+            }
+        }
+
+        /* Additional Touch Optimizations */
+        .task-item {
+            touch-action: pan-y;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        input[type="checkbox"] {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Fix for iOS Input Styles */
+        input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 12px;
+        }
+
+        /* Fix for iOS Button Styles */
+        button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    </style>
+</head>
+<!-- Rest of the HTML remains the same -->
+</html>
